@@ -1,0 +1,10 @@
+<h2>Películas Populares</h2>
+<div *ngFor="let movie of popularMovies">
+  <a [routerLink]="['/movie', movie.id]">
+    <h3>{{ movie.title }}</h3>
+    <img
+      *ngIf="movie.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+    />
+  </a>
+</div>
