@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { forkJoin } from 'rxjs'; // <-- Add this import
 
 @Component({
   standalone: true,
@@ -15,8 +16,11 @@ export class HomeComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getPopularMovies().subscribe(data => {
-      this.popularMovies = data.results;
+    forkJoin([
+      this.movieService.getPopularMovies(1),
+      this.movieService.getPopularMovies(2)
+    ]).subscribe(([page1, page2]) => {
+      this.popularMovies = [...page1.results, ...page2.results];
     });
   }
 }
