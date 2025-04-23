@@ -30,7 +30,7 @@ h2 {
   }
   
   .movie-card img {
-    width: 100%;
+    width: 80%;
     border-radius: 8px;
     transition: transform 0.2s;
   }
