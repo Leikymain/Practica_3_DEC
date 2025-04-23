@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   selector: 'app-home',
   imports: [CommonModule, RouterModule],
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
   popularMovies: any[] = [];

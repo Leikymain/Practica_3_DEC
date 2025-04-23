@@ -1,13 +1,18 @@
 <h2>Buscar Películas</h2>
-<input [(ngModel)]="query" placeholder="Nombre de la película" />
-<button (click)="search()">Buscar</button>
+<div class="search-form">
+  <input class="search-input" [(ngModel)]="query" placeholder="Nombre de la película" />
+  <button class="search-button" (click)="search()">Buscar</button>
+</div>
 
-<div *ngFor="let movie of searchResults">
-  <a [routerLink]="['/movie', movie.id]">
-    <h3>{{ movie.title }}</h3>
-    <img
-      *ngIf="movie.poster_path"
-      [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
-    />
-  </a>
+<div class="movies-grid">
+  <div class="movie-card" *ngFor="let movie of searchResults">
+    <a [routerLink]="['/movie', movie.id]">
+      <img
+        *ngIf="movie.poster_path"
+        [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+        [alt]="movie.title"
+      />
+      <h3>{{ movie.title }}</h3>
+    </a>
+  </div>
 </div>
