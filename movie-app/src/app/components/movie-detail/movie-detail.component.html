@@ -1,10 +1,15 @@
-<div *ngIf="movie">
+<div *ngIf="movie" class="movie-detail-card">
   <h2>{{ movie.title }}</h2>
-  <img
-    *ngIf="movie.poster_path"
-    [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
-  />
-  <p>{{ movie.overview }}</p>
-  <p><strong>Fecha de estreno:</strong> {{ movie.release_date }}</p>
-  <p><strong>Puntuación:</strong> {{ movie.vote_average }}</p>
+  <div class="movie-detail-content">
+    <img
+      *ngIf="movie.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+      [alt]="movie.title"
+    />
+    <div class="movie-detail-info">
+      <p class="overview">{{ movie.overview }}</p>
+      <p><strong>Fecha de estreno:</strong> {{ movie.release_date }}</p>
+      <p><strong>Puntuación:</strong> {{ movie.vote_average }}</p>
+    </div>
+  </div>
 </div>
